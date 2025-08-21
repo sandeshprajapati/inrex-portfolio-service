@@ -1,0 +1,31 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /portfolio
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/inrex-realm
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/portfolio
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    "[com.org.inrex.portfolio]": DEBUG
+    "[org.springframework.security]": TRACE
+    "[org.springframework.security.oauth2]": TRACE
+    "[org.springframework.web]": TRACE
+    "[org.springframework.security.authentication]": TRACE
